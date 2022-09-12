@@ -106,6 +106,9 @@ def Presentees(request):
     return render(request,'Presentees.html',{'Presentees':results})
 
 def Absentees(request):
+    cursor1=connection.cursor()
+    cursor1.execute("select studentdata.name,studentdata.rollno,studentdata.sem,smartattend.date from studentdata join smartattend on smartattend.name!=studentdata.name")
+    results=cursor1.fetchall()
     return render(request,'Absentees.html')
 
 def Attendence(request):

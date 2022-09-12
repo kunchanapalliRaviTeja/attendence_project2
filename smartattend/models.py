@@ -16,4 +16,12 @@ class Presentees(models.Model):
     rollno=models.CharField(max_length=100)
     sem=models.CharField(max_length=100)
     date=models.CharField(max_length=100)
+
+
+class Absentees(models.Model):
+    name=models.CharField(max_length=100)
+    rollno=models.CharField(max_length=100)
+    sem=models.CharField(max_length=100)
+    date=models.CharField(max_length=100)
+
         
