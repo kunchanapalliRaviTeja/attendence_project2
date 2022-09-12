@@ -1,3 +1,28 @@
 {% extends 'tempo.html' %}
 {% block content %}
+<head>
+    <style>
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+          }
+    </style>
+</head>
+<h1><center>Presentees Data</center></h1>
+<table border="1"  class="center">
+    <tr>
+        <th>Name</th>
+        <th>RegdNO</th>
+        <th>sem</th>
+        <th>Date</th>
+    </tr>
+    {% for displaydata in Presentees %}
+    <tr>
+        <td>{{displaydata.0}}</td>
+        <td>{{displaydata.1}}</td>
+        <td>{{displaydata.2}}</td>
+        <td>{{displaydata.3}}</td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}

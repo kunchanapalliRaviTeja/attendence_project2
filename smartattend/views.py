@@ -4,7 +4,8 @@ from django.shortcuts import render
 import mysql.connector as sql
 from django.contrib import messages
 from smartattend.models import StudentDetails
-
+from django.db import connection
+from smartattend.models import Presentees
 # Create your views here.
 name=''
 rno=''
@@ -99,13 +100,15 @@ def totalStudents(request):
     
 
 def Presentees(request):
-    return render(request,'Presentees.html')
+    cursor=connection.cursor()
+    cursor.execute("select studentdata.name,studentdata.rollno,studentdata.sem,smartattend.date from studentdata join smartattend on studentdata.name=smartattend.name")
+    results=cursor.fetchall()
+    return render(request,'Presentees.html',{'Presentees':results})
 
 def Absentees(request):
     return render(request,'Absentees.html')
 
 def Attendence(request):
-    
     return render(request,'Attendence.html')
 
 
