@@ -1,0 +1,77 @@
+{% extends 'tempo.html' %}
+{% block content %}
+<style>
+.forms-html{
+padding:150px;
+}
+.forms-html form{
+margin:60px;
+padding-left:150px;
+box-shadow:1px 1px 18px black;
+width:50%;
+text-align:center;
+}
+.forms-html form input{
+border-radius:5px;
+width:90%;
+padding:5px;
+margin:10px;
+outline:none;
+border:none;
+border-left:5px solid orange;
+}
+.forms-html form select{
+border-radius:5px;
+width:90%;
+padding:5px;
+margin:10px;
+outline:none;
+border:none;
+border-left:5px solid orange;
+}
+.forms-html form button{
+padding:10px;
+border:none;
+background-color:orange;
+color:blue;
+font-family:verdana;
+font-weight:bold;
+}
+.forms-html form input:focus{
+border-left:4px solid blue;
+border-right:4px solid blue;
+box-shadow:1px 1px 8px black;
+}
+.forms-html form select:hover{
+background-color:yellow;
+
+}
+</style>
+</head>
+<body>
+<div class="forms-html">
+<form method="POST">
+
+
+<h2>STUDENT REGISTRATION</h2>
+<input type="text" name="Name" placeholder="name" required><br>
+<input type="text" name="Rollno" placeholder="Rollno" required><br>
+<input type="email" name="MailId" placeholder="mail-id" required><br>
+<select name="Semester" required>
+<option>--Semester--</option>
+<option>1-1</option>
+<option>1-2</option>
+<option>2-1</option>
+<option>2-2</option>
+<option>3-1</option>
+<option>3-2</option>
+<option>4-1</option>
+<option>4-2</option>
+<br>
+<br>
+<input type="text" name="City" placeholder="city" required></br>
+<button type="submit">Register</button>
+<button type="reset">refresh</button>
+</form>
+</div>
+{% endblock %}

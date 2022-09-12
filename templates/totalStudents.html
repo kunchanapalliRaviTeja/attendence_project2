@@ -1,0 +1,23 @@
+{% extends 'tempo.html' %}
+{% block content %}
+<h1>Student Data</h1>
+<hr/>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>RegdNO</th>
+        <th>MailId</th>
+        <th>sem</th>
+        <th>City</th>
+    </tr>
+    {% for getdata in StudentDetails %}
+    <tr>
+        <td>{{getdata.name}}</td>
+        <td>{{getdata.rollno}}</td>
+        <td>{{getdata.mailid}}</td>
+        <td>{{getdata.sem}}</td>
+        <td>{{getdata.city}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
