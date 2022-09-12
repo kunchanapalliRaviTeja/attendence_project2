@@ -1,5 +1,6 @@
 {% extends 'tempo.html' %}
 {% block content %}
+
 <style>
 .forms-html{
 padding:150px;
@@ -51,7 +52,7 @@ background-color:yellow;
 <body>
 <div class="forms-html">
 <form method="POST">
-
+    {% csrf_token %}
 
 <h2>STUDENT REGISTRATION</h2>
 <input type="text" name="Name" placeholder="name" required><br>

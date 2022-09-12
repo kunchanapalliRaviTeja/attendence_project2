@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
-#import mysql.connector as sql
+import mysql.connector as sql
 from django.contrib import messages
 from smartattend.models import StudentDetails
 
@@ -13,7 +13,7 @@ sem=''
 city=''
 em=''
 pwd=''
-def smartpage(request):
+"""def smartpage(request):
     global name,rno,mail,sem,city
     if request.method=="POST":
         m=sql.connect(host="localhost",user="root",passwd="",database='student')
@@ -33,8 +33,7 @@ def smartpage(request):
         c="insert into studentdata Values('{}','{}','{}','{}','{}')".format(name,rno,mail,sem,city)
         cursor.execute(c)
         m.commit()
-
-    return render(request,"student_rege.html")
+    return render(request,"student_rege.html")"""
 
 
 
@@ -63,8 +62,30 @@ def loginaction(request):
 
 
 def StudentRege(request):
-    return render(request,'student_rege.html')
+    global name,rno,mail,sem,city
+    if request.method=="POST":
+        m=sql.connect(host="localhost",user="root",passwd="",database='student')
+        cursor=m.cursor()
+        d=request.POST
+        for key,value in d.items():
+            if key=="Name":
+                name=value
+            if key=="Rollno":
+                rno=value
+            if key=="MailId":
+                mail=value
+            if key=="Semester":
+                sem=value
+            if key=="City":
+                city=value
+        c="insert into studentdata Values('{}','{}','{}','{}','{}','{}')".format('',name,rno,mail,sem,city)
+        cursor.execute(c)
+        m.commit()
+    return render(request,"student_rege.html")
 
+
+
+    
 
 def dash(request):
     return render(request,'dashboard.html')
@@ -73,9 +94,9 @@ def admin(request):
     return render(request,'admin.html')
 
 def totalStudents(request):
-    #resultsdisplay=StudentDetails.objects.all()
-    return render(request,'totalStudents.html')
-    #,{'StudentDetails': resultsdisplay}
+    resultsdisplay=StudentDetails.objects.all()
+    return render(request,'totalStudents.html',{'StudentDetails': resultsdisplay})
+    
 
 def Presentees(request):
     return render(request,'Presentees.html')
